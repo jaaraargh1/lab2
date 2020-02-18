@@ -1,13 +1,14 @@
 package myutil;
 
-public class MySingleLinkedList<E> extends OurAbstractList {
-	private Node<E> node = null;
+public class MySingleLinkedList<E> {
+//	private Node<E> node = null;
 	private Node<E> head = null;
 	private int size;
 
 	public MySingleLinkedList() {
 
 	}
+
 	/*
 	 * 
 	 * 
@@ -22,28 +23,28 @@ public class MySingleLinkedList<E> extends OurAbstractList {
 		}
 	}
 
-	/*
-	 * returns length of the list.
-	 * 
-	 */
 	public int getSize() {
 		return this.size;
+
 	}
+
 	/*
 	 * 
 	 * 
-	 *  prints the entire list, will stop when the next node is null.
+	 * prints the entire list, will stop when the next node is null.
 	 */
-		public void printList() {
-			Node<E> node = head;
 
-			while (node.getNext() != null) {
+	public void printList() {
+		Node<E> node = head;
 
-				System.out.println(node.getData());
-				node = node.getNext();
-			}
+		while (node.getNext() != null) {
+
 			System.out.println(node.getData());
+			node = node.getNext();
 		}
+		System.out.println(node.getData());
+	}
+
 	/*
 	 * 
 	 * 
@@ -51,7 +52,9 @@ public class MySingleLinkedList<E> extends OurAbstractList {
 	 * than the search key it will throw an out of reach error.
 	 * 
 	 * @Returns the number at the index.
-	 * @parameter int searchkey 
+	 * 
+	 * @parameter int searchkey
+	 * 
 	 * @throws OutOfReachError
 	 */
 
@@ -59,7 +62,7 @@ public class MySingleLinkedList<E> extends OurAbstractList {
 		if (!this.isEmpty() && (searchKey < getSize())) {
 
 			Node<E> current = head;
-			for (int i = 1; i < searchKey; ++i) {
+			for (int i = 0; i < searchKey; ++i) {
 				current = current.getNext();
 			}
 			return current.getData();
@@ -75,12 +78,11 @@ public class MySingleLinkedList<E> extends OurAbstractList {
 	 * Checks whether the list is empty or not then proceeds to insert it at the
 	 * head if it is. else it loops until it finds an empty spot that got the value
 	 * null. Also count size++.
+	 * 
 	 * @param takes in an Element data
 	 */
-	
-	
-	public void add(E data) {
 
+	public void add(E data) {
 		Node<E> temp = new Node<E>(data);
 		Node<E> current = head;
 
@@ -90,7 +92,6 @@ public class MySingleLinkedList<E> extends OurAbstractList {
 			current = head;
 			size++;
 			return;
-
 		}
 
 		while (current.getNext() != null) {
@@ -98,7 +99,5 @@ public class MySingleLinkedList<E> extends OurAbstractList {
 		}
 		current.setNext(temp);
 		size++;
-
 	}
-
 }
